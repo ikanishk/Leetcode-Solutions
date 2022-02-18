@@ -1,33 +1,23 @@
 class Solution {
-    public int maxCoins(int[] nums) {
-        
-        int n =  nums.length;
-        int arr[] =  new int[n+2]; 
-        for(int i=0;i<n;i++){
-            arr[i+1] = nums[i];
-        }
-        arr[0]=1;arr[n+1] =  1;
-        int dp[][]  = new int[n+2][n+2];
-        //  dp[i][j]  -  storing the max coins u can earn in  this interval/subarray
-        
-        for(int wlen=1;wlen<=n;wlen++ ){
-            for(int left =  1;left<=n-wlen+1;left++){
-                int right =  left+wlen-1;
-                
-                // now iterate this window, and give chance to every ballon to burst at last
-                for(int k=left;k<=right;k++){
-                    dp[left][right]  = Math.max(dp[left][right],
-                                               dp[left][k-1]+ // left subarray 
-                                                dp[k+1][right]+ // right subarray
-                                                (arr[k]*arr[left-1]*arr[right+1]) // bursting k index ballon at last , and intervals side balloons will bust with last balloon 
-                                               )        ;                                    
-                }                                                
+    public int maxCoins(int[] arr) {
+            int[][]dp=new int[arr.length][arr.length];
+        for(int g=0;g<dp.length;g++){
+        for(int i=0,j=g;j<dp.length;i++,j++){
+            int max=Integer.MIN_VALUE;
+            for(int k=i;k<=j;k++){
+            int left=k == i?0:dp[i][k-1];
+            int right=k == j?0:dp[k+1][j];
+            int val=(i==0 ? 1: arr[i-1])*arr[k]*(j==arr.length-1?1:arr[j+1]);
+            
+            int total=left+right+val;
+            if(total>max){
+                max=total;
             }
         }
-        
-         return dp[1][n]; // returning answer stored for orginal size problem
-        
-        
-        
+        dp[i][j]=max;
+        }
+       }
+    
+        return dp[0][dp.length-1];    
     }
 }
