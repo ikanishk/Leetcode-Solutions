@@ -1,9 +1,14 @@
 class Solution {
     public int maxCoins(int[] arr) {
             int[][]dp=new int[arr.length][arr.length];
+        
+        //The initial 2 loops are to implement the gap strategy.
         for(int g=0;g<dp.length;g++){
-        for(int i=0,j=g;j<dp.length;i++,j++){
+        for(int i=0,j=g;j<dp.length;i++,j++){ 
+            
             int max=Integer.MIN_VALUE;
+            
+            //This internal loop is to iterate in the window and figure out the max.
             for(int k=i;k<=j;k++){
             int left=k == i?0:dp[i][k-1];
             int right=k == j?0:dp[k+1][j];
