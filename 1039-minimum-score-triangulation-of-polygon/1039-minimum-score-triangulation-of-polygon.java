@@ -1,16 +1,27 @@
 class Solution {
     public int minScoreTriangulation(int[] arr) {
-    	   int [][]dp=new int[arr.length][arr.length];
-    for(int gap=2;gap<arr.length;gap++){
-      for(int si=0,ei=gap;ei<arr.length;si++,ei++){  //The first 2 loops are for the diagonal(gap) traversal in the matrix.
-        int min=Integer.MAX_VALUE;
-        for(int cp=si+1;cp<ei;cp++){ //This loop is to find minimum of all the applied cuts in all sub-matrices (si -> ei); 
-        min=Math.min(min,dp[si][cp]+dp[cp][ei]+arr[si]*arr[ei]*arr[cp] );
-        }
-        dp[si][ei]=min;
-      }
-    }
+        int[][] dp = new int[arr.length][arr.length];
+        for (int g = 2; g < dp.length; g++) {
+            for (int i = 0, j = g; j < dp[0].length; i++, j++) {
+                 if (g == 2) {
+                    dp[i][j] = arr[i] * arr[i + 1] * arr[i + 2];
+                }
 
-		return dp[0][arr.length-1];    
+                else {
+                    int min = Integer.MAX_VALUE;
+                    for (int k = i + 1; k <= j - 1; k++) {
+                        int leftpart = dp[i][k];
+                        int rightpart = dp[k][j];
+                        int triangle = arr[i] * arr[j] * arr[k];
+
+                        int total = leftpart + rightpart + triangle;
+                        min=Math.min(min,total);
+                    }
+                     dp[i][j] = min;
+                }
+            }
+           
+        }
+        return dp[0][dp[0].length - 1];  
     }
 }
