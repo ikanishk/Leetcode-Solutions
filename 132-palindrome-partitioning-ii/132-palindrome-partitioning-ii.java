@@ -1,6 +1,10 @@
 class Solution {
     public int minCut(String s) {
+        
+        // firstly create a boolean array to store the (true/false) status of all substrings
               boolean[][] dp1 = new boolean[s.length()][s.length()];
+        
+        //traverse the array and store the true/false status.
         for (int g = 0; g < dp1.length; g++) {
             for (int i = 0, j = g; j < dp1.length; i++, j++) {
                 
