@@ -1,6 +1,8 @@
 class Solution {
     public int countSubstrings(String s) {
         int count=0;
+        
+        //First of all we create a 2-D boolean DP array and fill true on all the pallindromic substrings.
         boolean[][] dp1 = new boolean[s.length()][s.length()];
         for (int g = 0; g < dp1.length; g++) {
             for (int i = 0, j = g; j < dp1.length; i++, j++) {
