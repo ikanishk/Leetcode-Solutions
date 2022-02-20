@@ -33,7 +33,7 @@ class Solution {
             }
         }
         
-        
+        //Prefix loop(which checks whether the substring is pallindromic, if yes, then it removes the subsstring and checks for the minimum cuts possible in the remaining array.)
         int[]strg=new int[s.length()];
         strg[0]=0;
         
