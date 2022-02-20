@@ -2,6 +2,8 @@ class Solution {
 
 public int removeCoveredIntervals(int[][] intervals) {
     int n = intervals.length;
+    
+    //The whole intutiton behind writng this comparator is to sort intervals array based on the first value of all intervals(if the first value is same, then on the second value).
     Arrays.sort(intervals, (a, b) -> {
         if (a[0] != b[0]) {
             return a[0] - b[0];    
