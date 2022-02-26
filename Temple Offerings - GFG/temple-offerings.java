@@ -28,7 +28,7 @@ class GFG{
 class Solution{
     int offerings(int n, int height[]){
     //Create a leftarray(larr) and iterate it from left -> right such that the value increases as the temple height and reset it to 0 whenever the height declines.
-        int[]larr=new int[n];
+     int[]larr=new int[n];
      larr[0]=1;
      for(int i=1;i<height.length;i++){
      if(height[i]>height[i-1]){
