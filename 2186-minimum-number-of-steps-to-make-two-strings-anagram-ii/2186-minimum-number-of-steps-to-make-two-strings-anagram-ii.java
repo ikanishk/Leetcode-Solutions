@@ -9,6 +9,8 @@ class Solution {
         for(int i = 0 ;i < t.length() ; i++){
             secondCharacter[t.charAt(i) - 'a'] += 1;
         }
+        
+        // For each letter, its contribution to the answer is the absolute difference between its frequency in s and t.
         for(int i = 0 ;i < firstCharacter.length ; i++){
             if(firstCharacter[i]  != secondCharacter[i]){
                 steps += Math.abs(firstCharacter[i] - secondCharacter[i]);
