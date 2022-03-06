@@ -1,11 +1,14 @@
 class Solution {
-   public int countOrders(int n) {
-	long result = 1;
-	int m = 1000000007;
-	for (int i = 1; i <= n; i++) {
-		result *= i * (2L * i - 1); //doing both factorial and odd numbers in one go, still within long data type range
-		result %= m;
-	}
-	return (int) result;
-}
+    public int countOrders(int n) {
+        int N = (int)Math.pow(10,9)+7;
+        long prev = 1;
+        long ans = 1L;
+        for(int i=2;i<=n;i++){
+            int num = 2 * (i-1) + 1;
+            ans = (num*(num+1)*prev)/2;
+            ans%=N;
+            prev = ans;
+        }
+        return (int)ans;
+    }
 }
