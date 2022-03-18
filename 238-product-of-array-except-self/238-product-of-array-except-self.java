@@ -1,5 +1,11 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
+    // We create 3 arrays.
+    // 1) Left Prefix Product array.
+    // 2) Right Prefix Product array.
+    // 3) ans array.
+        
+    //We can find the product of all except nums[i] if we multiply left[i-1]*right[i+1] for each nums[i].
     int[]left=new int[nums.length];
     int[]right=new int[nums.length];
     int[]ans=new int[nums.length];
