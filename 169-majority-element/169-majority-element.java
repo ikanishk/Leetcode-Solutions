@@ -1,17 +1,31 @@
 class Solution {
+    //Moore's Voting Algorithm
     public int majorityElement(int[] nums) {
-        int n = nums.length/2;
-        Arrays.sort(nums);
-        int count=1;
-        int temp = 0;
-        for(int i=0;i<nums.length-1;i++){
-            if(count > n) return nums[i];
-            if(nums[i] == nums[i+1]) {
-                temp = i;
-                count++;
-            }
-            else count=1;
-        }
-        return nums[temp];
+    int val=nums[0];
+    int count=1;
+    
+    for(int i=1;i<nums.length;i++){
+    if(nums[i]==val){
+    count++;
+    }
+    else{
+    count--;
+    }
+    
+    if(count==0){
+    val=nums[i];
+    count=1;
+    }
+    }
+    return val;
+    // int f=0;    
+    // for(int i=0;i<nums.length;i++){
+    // if(nums[i]==val){
+    // f++;
+    // }
+    // }
+    // if(f>nums.length/2){
+    // return f;
+    // }
     }
 }
