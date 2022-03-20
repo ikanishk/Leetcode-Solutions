@@ -1,31 +1,16 @@
 class Solution {
-    public long maximumSubsequenceCount(String text, String pattern) {
-        if(pattern.equals(text)){
-            return 2;
-        }
-        List<Integer> temp1 = new ArrayList<>();
-        List<Integer> temp2 = new ArrayList<>();
-        char x = pattern.charAt(0); char y = pattern.charAt(1);
-        for(int i=0; i<text.length(); i++){
-            char c = text.charAt(i);
-            if(c == x){
-                temp1.add(i);
+    public long maximumSubsequenceCount(String s, String pattern) {
+        long res = 0, cnt1 = 0, cnt2 = 0;
+        for (int i = 0; i < s.length(); ++i) {   
+            if (s.charAt(i) == pattern.charAt(1)) {   
+                res += cnt1; 
+                cnt2++;
             }
-            if(c == y){
-                temp2.add(i);
+            if (s.charAt(i) == pattern.charAt(0)) {   
+                cnt1++;
             }
         }
-        long ans = 0;
-        int i = 0; int j = 0;
-        while(i < temp1.size() && j < temp2.size()){
-            if(temp1.get(i) >= temp2.get(j)){
-                j++;
-            }
-            else{
-                ans += (temp2.size() - j);
-                i++;
-            }
-        }
-        return ans + Math.max(temp1.size(), temp2.size());
+        return res + Math.max(cnt1, cnt2);
+    
     }
 }
