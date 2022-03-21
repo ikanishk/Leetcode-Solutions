@@ -1,3 +1,4 @@
+// O(nlogn) Solution
 // class Solution {
 //     public int maximumProduct(int[] nums) {
 //         if(nums.length==3){
@@ -15,7 +16,7 @@
 // }
 
 
-
+// O(n) Solution
 class Solution {
     public int maximumProduct(int[] nums) {
         int fmin = Integer.MAX_VALUE; //first min
