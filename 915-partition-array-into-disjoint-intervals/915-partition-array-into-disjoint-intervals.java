@@ -18,6 +18,6 @@ class Solution {
       }
     }
     
-    return 11;
+    return arr.length+1;
     }
 }
