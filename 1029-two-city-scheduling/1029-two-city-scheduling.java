@@ -13,6 +13,8 @@ class Solution {
         return minCost;
     }
     
+    
+    //This comparator sorts the costs array on the basis of the difference in cost of A and cost of B.
     public class ProfitComparator implements Comparator<int[]>{
         @Override
         public int compare(int[] one,int[] two){
