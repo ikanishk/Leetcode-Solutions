@@ -5,11 +5,11 @@ class Solution {
     int j=num2.length()-1;
     int carry=0;
     while(i>=0 || j>=0 || carry!=0){
-    int ival= i>=0 ?  num1.charAt(i)-'0' :0;
+    int ival= i>=0 ?  num1.charAt(i)-'0' :0; //this statement ensures i never goes below 0.
     int jval= j>=0 ?  num2.charAt(j)-'0' :0;
     i--;
     j--;
-    int sum=ival+jval+carry;
+    int sum=ival+jval+carry; 
     res=(sum%10)+res;
     carry=sum/10;
     }
