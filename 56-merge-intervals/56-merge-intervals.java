@@ -5,7 +5,7 @@ class Solution {
         if(intervals.length == 0 || intervals == null) 
             return res.toArray(new int[0][]);
         
-        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]); //sort all the intervals based on the start time.
         
         int start = intervals[0][0];
         int end = intervals[0][1];
