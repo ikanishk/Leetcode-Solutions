@@ -1,5 +1,5 @@
 
-//Problem  Based on range addition problem.
+//Solution  Based on range addition problem.
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
         int max = 0;
