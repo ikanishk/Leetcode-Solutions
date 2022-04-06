@@ -77,7 +77,7 @@ class Complete{
         int count=0;
         for(int key:mp.keySet()){
         int val=mp.get(key)-1;
-        count=count+((val*(val+1))/2);
+        count=count+((val*(val+1))/2);//our observation is that the number of possible pairs for every lement occuring n times is the sum of natural numbers till (n-1)
         }
         return count;
     }
