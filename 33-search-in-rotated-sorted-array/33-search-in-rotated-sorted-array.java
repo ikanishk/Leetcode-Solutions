@@ -1,5 +1,7 @@
 class Solution {
+     //The approach is to use Binary Search in order to eliminate the halves of the array where the element can definitely not be present and perform a search in a logarithmic time.
         public int search(int[] nums, int target) {
+       
         int lo = 0;
         int hi = nums.length-1;
         
