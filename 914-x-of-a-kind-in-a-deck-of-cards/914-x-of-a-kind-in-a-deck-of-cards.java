@@ -1,10 +1,14 @@
 class Solution {
     public boolean hasGroupsSizeX(int[] deck) {
         HashMap<Integer,Integer>map=new HashMap<>();
+        //Make a frequency map
+        //Find GCD of all the keys
+        // if there exists a GCD more than 2, return true, otherwise false.
         for(int i=0; i < deck.length;i++) {
             int nf = map.getOrDefault(deck[i],0) + 1;
             map.put(deck[i],nf);
-        }       
+        }
+        
         int maplength=0;
                 for(int key:map.keySet()){
                 maplength++;
