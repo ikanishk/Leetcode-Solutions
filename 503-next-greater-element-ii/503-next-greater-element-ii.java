@@ -1,3 +1,6 @@
+//Approach: 
+//STEP 1: Run a loop from right -> left implementing the NGE algorithm but don't make a answer array.
+//STEP 2: Run the same loop again from right -> left but this time make an answer array.
 class Solution {
     public int[] nextGreaterElements(int[] arr) {
         int n = arr.length;
