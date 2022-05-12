@@ -1,49 +1,33 @@
 class Solution {
-
+    List<List<Integer>> res;
+    
     public List<List<Integer>> permuteUnique(int[] nums) {
-        List<List<Integer>> results = new ArrayList<>();
-
-        // count the occurrence of each number
-        HashMap<Integer, Integer> counter = new HashMap<>();
-        for (int num : nums) {
-            if (!counter.containsKey(num))
-                counter.put(num, 0);
-            counter.put(num, counter.get(num) + 1);
-        }
-
-        LinkedList<Integer> comb = new LinkedList<>();
-        this.backtrack(comb, nums.length, counter, results);
-        return results;
+        res = new LinkedList<>();
+        get(nums, 0);
+        return res;
     }
-
-    protected void backtrack(
-            LinkedList<Integer> comb,
-            Integer N,
-            HashMap<Integer, Integer> counter,
-            List<List<Integer>> results) {
-
-        if (comb.size() == N) {
-            // make a deep copy of the resulting permutation,
-            // since the permutation would be backtracked later.
-            results.add(new ArrayList<Integer>(comb));
+    
+    private void get(int[] nums, int start) {
+        if (start == nums.length - 1) {
+            res.add(toList(nums));
             return;
         }
-
-        for (Map.Entry<Integer, Integer> entry : counter.entrySet()) {
-            Integer num = entry.getKey();
-            Integer count = entry.getValue();
-            if (count == 0)
-                continue;
-            // add this number into the current combination
-            comb.addLast(num);
-            counter.put(num, count - 1);
-
-            // continue the exploration
-            backtrack(comb, N, counter, results);
-
-            // revert the choice for the next exploration
-            comb.removeLast();
-            counter.put(num, count);
+        Set<Integer> set = new HashSet<>();
+        for (int i = start; i < nums.length; i++) {
+            if (set.add(nums[i])) {
+                int tmp = nums[start];
+                nums[start] = nums[i];
+                nums[i] = tmp;
+                get(nums, start + 1);
+                nums[i] = nums[start];
+                nums[start] = tmp;
+            }
         }
+    }
+    
+    private List<Integer> toList(int[] nums) {
+        List<Integer> list = new LinkedList<>();
+        for (int i : nums) list.add(i);
+        return list;
     }
 }
