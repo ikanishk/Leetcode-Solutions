@@ -1,8 +1,9 @@
+
 class Solution {
     public int numEnclaves(int[][] grid) {
         for(int i=0; i < grid.length;i++) {
             for(int j=0; j < grid[0].length;j++) {
-                //boundary's 1
+                //boundary's wale 1s ke connected components ko 'zero' karna hai.
                 if((i == 0 || i == grid.length-1 || j == 0 || j == grid[0].length-1) && grid[i][j] == 1) {
                     dfs(grid,i,j);
                 } 
