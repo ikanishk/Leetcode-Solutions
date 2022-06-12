@@ -1,3 +1,4 @@
+//Using the " Aquire and Release Strategy" by Sumeet Sir
 class Solution {
 public int maximumUniqueSubarray(int[] nums) {        
 	int maxScore = 0, currScore = 0;
