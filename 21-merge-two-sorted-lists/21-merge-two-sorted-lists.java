@@ -19,7 +19,7 @@ class Solution {
             return list1;
         }
         
-        //Keep both pointers on the head of the liinked list.
+        //Keep both pointers on the head of both the linked list.
         ListNode head = null, tail = null;
         while(list1!=null && list2!=null){
             if(head==null){
