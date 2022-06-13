@@ -10,7 +10,7 @@
  */
 class Solution {
    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode anchor = new ListNode(-1);
+        ListNode anchor = new ListNode(0);
         ListNode current = anchor;
         
         int carry = 0;
