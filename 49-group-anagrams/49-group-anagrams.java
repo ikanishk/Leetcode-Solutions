@@ -1,6 +1,8 @@
 class Solution {
  public List<List<String>> groupAnagrams(String[] strs) {
      //point to remember : Not everything can become a hasmap key, it should have a equals() and hashcode() function to do so.
+     
+     //The initial approach is to make a HashMap of HashMap and arraylist and get unique arraylist and then put them all in a ArrayList<ArrayList>.
         HashMap<HashMap<Character,Integer>,ArrayList<String>>map = new HashMap<>(); //fmap vs arraylist
         
         for(int i=0; i < strs.length;i++) {
