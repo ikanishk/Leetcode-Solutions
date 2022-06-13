@@ -20,7 +20,6 @@ class Solution {
         }
         
         //Keep both pointers on the head of the liinked list.
-        // keep on iterationg the ll by a profiecient tortois e algorithm.
         ListNode head = null, tail = null;
         while(list1!=null && list2!=null){
             if(head==null){
