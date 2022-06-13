@@ -10,12 +10,17 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+        //null check for both lists//
         if(list1==null){
             return list2;
         }
         if(list2==null){
             return list1;
         }
+        
+        //Keep both pointers on the head of the liinked list.
+        // keep on iterationg the ll by a profiecient tortois e algorithm.
         ListNode head = null, tail = null;
         while(list1!=null && list2!=null){
             if(head==null){
