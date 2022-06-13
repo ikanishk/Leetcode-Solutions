@@ -10,14 +10,17 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        //CREATING A DUMMY NODE
         ListNode start = new ListNode();
         start.next = head;
         ListNode fast = start;
         ListNode slow = start;     
-
+        
+        //MOVING FAST POINTER FOR n TIMES.
         for(int i = 1; i <= n; ++i)
             fast = fast.next;
     
+        //TILL THE FAST POINTER REACHES NULL.
         while(fast.next != null)
         {
             fast = fast.next;
