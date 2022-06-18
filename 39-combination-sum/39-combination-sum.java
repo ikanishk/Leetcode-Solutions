@@ -10,7 +10,7 @@ class Solution {
         if (arr[ind] <= target) {
             ds.add(arr[ind]);
             findCombinations(ind, arr, target - arr[ind], ans, ds);
-            ds.remove(ds.size() - 1);
+            ds.remove(ds.size() - 1);//removing the elements so we can regain the original combination at                                       the higher level to continue the recursion on the other option.
         }
         findCombinations(ind + 1, arr, target, ans, ds);
     }
