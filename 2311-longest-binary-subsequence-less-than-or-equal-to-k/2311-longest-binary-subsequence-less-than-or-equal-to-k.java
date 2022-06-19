@@ -1,6 +1,10 @@
 class Solution {
     
     // Take all zeros and as many ones as possible from right to left.
+    
+    //Iterate from right -> left.
+    //Include all zeroes as they don't contribute.
+    //When encounter a '1', the value till that point is 2^(j-1) where j is the distance from the last element.
     public int longestSubsequence(String s, int k) {
         int sum = 0;
         int numOfOnes = 0;
