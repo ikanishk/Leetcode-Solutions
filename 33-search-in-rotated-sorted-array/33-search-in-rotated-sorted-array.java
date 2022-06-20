@@ -11,8 +11,10 @@ class Solution {
             if(nums[mid] == target) {
                 return mid;
             }
+            
+            //Check if lo to mid(left half) is sorted.
             else if(nums[lo] <= nums[mid]) {
-                //lo to mid is sorted
+                
                 if(nums[lo] <= target && target <= nums[mid]) {
                     hi = mid-1;
                 }
@@ -20,8 +22,9 @@ class Solution {
                     lo = mid+1;
                 }
             }
+            
             else if(nums[mid] <= nums[hi]){
-                //mid to hi is sorted
+                // check if mid to hi is sorted
                 if(nums[mid] <= target && target <= nums[hi]) {
                     lo = mid+1;
                 }
