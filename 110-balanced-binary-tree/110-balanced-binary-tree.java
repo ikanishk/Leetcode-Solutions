@@ -17,6 +17,8 @@ class Solution {
     public boolean isBalanced(TreeNode root) {
         return dfsHeight (root) != -1;
     }
+    
+    //We Create a helper function named dfsheight which returns -1 if height difference exceeds 1
     int dfsHeight (TreeNode root) {
         if (root == null) return 0;
         
