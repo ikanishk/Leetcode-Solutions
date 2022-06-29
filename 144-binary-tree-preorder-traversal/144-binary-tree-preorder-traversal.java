@@ -13,6 +13,8 @@
  *     }
  * }
  */
+
+//Create a Stack and keep iterating in the order( root-> right -> left)
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer>preorder=new ArrayList<>();
