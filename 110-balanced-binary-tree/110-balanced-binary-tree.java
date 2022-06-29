@@ -23,10 +23,10 @@ class Solution {
         if (root == null) return 0;
         
         int leftHeight = dfsHeight (root.left);
-      
         int rightHeight = dfsHeight (root.right);
-         if (leftHeight == -1) return -1;
-        if (rightHeight == -1) return -1;
+
+        if (leftHeight == -1 || rightHeight == -1) return -1;
+       
         
         if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
         return Math.max(leftHeight, rightHeight) + 1;
