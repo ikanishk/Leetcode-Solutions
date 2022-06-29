@@ -1,10 +1,15 @@
 class Solution {
-public int[][] reconstructQueue(int[][] people) {
-	Arrays.sort(people, (a,b) -> a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]);
+    public int[][] reconstructQueue(int[][] people) {
+        List<int[]> result = new ArrayList<>(); //return value
+        
+        Arrays.sort(people, (a, b) -> {
+            int x = Integer.compare(b[0], a[0]);
+            if(x == 0) return Integer.compare(a[1], b[1]); 
+            else return x; });
 
-	List<int[]> ordered = new LinkedList<>();
-	for (int[] p: people) ordered.add(p[1], p);
-
-	return ordered.toArray(new int[people.length][2]);
-}
+        for(int[] p: people)
+            result.add(p[1], p);
+        
+        return result.toArray(new int[people.length][2]);
+    }
 }
