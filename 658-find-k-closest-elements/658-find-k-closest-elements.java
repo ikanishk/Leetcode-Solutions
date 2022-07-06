@@ -3,10 +3,6 @@ class Solution {
         int val;
         int gap;
         
-        Pair() {
-            
-        }
-        
         Pair(int val,int gap) {
             this.val = val;
             this.gap = gap;
