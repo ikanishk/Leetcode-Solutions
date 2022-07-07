@@ -1,41 +1,38 @@
 class Solution {
     public int[] frequencySort(int[] nums) {
-        //init hashmap and count occurences of elements in nums
-        //init minHeap based on occurence, if two elements have same freq sort in decreasing order
-        //add elements in map into minHeap as array, containing element and occurence
-		//init index to traverse array
-        //loop while minHeap is not empty
-        //grab min element 
-        //keep inserting element into nums while in bounds and occurence > 0
-        //return nums
-        
-        Map<Integer, Integer> map = new HashMap<>();
-        
-        for(int i : nums)
-        {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+        list.add(nums[i]);
         }
-        
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> a[1] == b[1] ? b[0] - a[0] : a[1] - b[1]);
-        
-        for(Map.Entry<Integer, Integer> entry : map.entrySet())
-        {
-            minHeap.add(new int[] {entry.getKey(), entry.getValue()});
-        }
-        
-        int index = 0;
-        
-        while(!minHeap.isEmpty())
-        {
-            int[] min = minHeap.poll();
-            
-            while(index < nums.length && min[1] > 0)
-            {
-                nums[index++] = min[0];
-                min[1]--;
-            }
-        }
-        
-        return nums;
+         Map<Integer, Integer> map = new HashMap<>();
+
+    for (int i = 0; i < list.size(); i++) {
+      map.put(list.get(i), map.getOrDefault(list.get(i), 0) + 1);
+    }
+
+    Collections.sort(list, (n1, n2) -> {
+      int freq1 = map.get(n1);
+      int freq2 = map.get(n2);
+
+      if (freq1 != freq2) {
+        return freq2 - freq1;
+      }
+
+      return n1 - n2;
+    });
+    int[] n = list.stream().mapToInt(i -> i).toArray();
+
+    return reverse(n,n.length);   
+    }
+    
+    public static int[] reverse(int a[], int n)
+    {
+        int[] b = new int[n];
+        int j = n;
+        for (int i = 0; i < n; i++) {
+            b[j - 1] = a[i];
+            j = j - 1;
+    }
+     return b;   
     }
 }
