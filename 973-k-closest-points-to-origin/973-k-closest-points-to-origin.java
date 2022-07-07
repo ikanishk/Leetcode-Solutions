@@ -2,11 +2,9 @@ class Solution {
     public int[][] kClosest(int[][] points, int K) {
         if(K == points.length) return points;
         
-        PriorityQueue<int[]> pq = new PriorityQueue<>(K, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b) {
-                return (b[0]*b[0] + b[1]*b[1]) - (a[0]*a[0] + a[1]*a[1]);
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> (b[0]*b[0] + b[1]*b[1]) - (a[0]*a[0] + a[1]*a[1]));
+            
+       
         
         for(int[] point: points) {
             pq.add(point);
