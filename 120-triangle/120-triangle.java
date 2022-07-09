@@ -1,5 +1,8 @@
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
+        
+        //We traverse through the triangle and
+        //for the first and last element in every row of the triangle, copy the direct result from above and for the remaining  element ge the the minimium of  arr[i-1][j] or arr[i-1][j-1]
         for(int i = 1; i < triangle.size(); i++) {
             for(int j = 0; j < triangle.get(i).size(); j++){
                 int sum = 0; 
