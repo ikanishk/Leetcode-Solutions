@@ -22,8 +22,7 @@ class Solution {
         
         if(mem[pos][sum]!=null) return mem[pos][sum];
         
-        return mem[pos][sum] = subsetSum(nums,pos+1,sum-nums[pos]) ||
-                                subsetSum(nums,pos+1,sum);
+        return mem[pos][sum] = subsetSum(nums,pos+1,sum-nums[pos]) || subsetSum(nums,pos+1,sum);
         
         
     }
