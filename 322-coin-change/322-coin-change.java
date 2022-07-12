@@ -4,7 +4,7 @@ class Solution {
         int b[][]=new int[k+1][a+1];
         for(int i=0;i<=a;i++)
         {
-            b[0][i]=10001;
+            b[0][i]=10001;//Infinity Value
         }
         for(int i=0;i<=k;i++)
         {
