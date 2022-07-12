@@ -14,7 +14,7 @@ class Solution {
         {
             for(int j=1;j<=a;j++)
             {
-                if(c[i-1]>j)
+            if(c[i-1]>j) //If the current denomination is greater than the amount, we exclude the current coin.
                 {
                     b[i][j]=b[i-1][j];
                 }
