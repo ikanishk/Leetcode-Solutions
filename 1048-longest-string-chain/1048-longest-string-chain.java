@@ -1,25 +1,32 @@
+//Time : NlogN + N * Length * Length
+//Space : O(N*Length)
 class Solution {
-public int longestStrChain(String[] words) {
-	Arrays.sort(words, (String a, String b) -> a.length() - b.length()); // sort by length
-    	// Arrays.sort(words); // sort by length
-
-	Map<String, Integer> dp = new HashMap<>();
-
-	int maxPath = 1;
-	// same idea behind the previous approach but performed iteratively.
-	for (String word: words) {
-		int currLength = 1;
-		StringBuilder sb = new StringBuilder(word);
-		for (int i=0; i<word.length(); i++) {
-			sb.deleteCharAt(i);
-			String prevWord = sb.toString();
-			currLength = Math.max(currLength, dp.getOrDefault(prevWord, 0) + 1); 
-			sb.insert(i, word.charAt(i));
-		}
-		dp.put(word, currLength);
-		maxPath = Math.max(maxPath, currLength);
-	}
-
-	return maxPath;
-}
+    public int longestStrChain(String[] words) {
+        //Sort on length
+        //Time : NlogN
+        Arrays.sort(words, (a,b) -> a.length()-b.length());
+        int res = 0;
+        Map<String, Integer> memo = new HashMap<>();
+        
+        //Iterate on the words
+        //TIme : N * Length * Length
+        for(String word : words) {
+            //Put current word in map with default value.
+            memo.put(word, 1);
+            //Time : Length * Length
+            for(int i = 0; i < word.length(); i++) {
+                StringBuilder current = new StringBuilder(word);
+                String next = current.deleteCharAt(i).toString(); //Time : Length
+                //Check if the value for next is already calculated
+                if(memo.containsKey(next)) {
+                    //Update the value in map with the maximum possible value
+                    memo.put(word, Math.max(memo.get(word), memo.get(next)+1));
+                }
+            }
+            
+            res = Math.max(res, memo.get(word));
+        }
+        
+        return res;
+    }
 }
