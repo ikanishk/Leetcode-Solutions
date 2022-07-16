@@ -3,7 +3,7 @@ public List<Integer> largestDivisibleSubset(int[] nums) {
 	var dp = new int[nums.length];
 	return constructLDS(nums, dp, getLDSSize(nums, dp));
 }
-
+//calculate LDSSize using LIS algorithm.
 private int getLDSSize(int[] nums, int[] dp) {
 	Arrays.sort(nums);
 	Arrays.fill(dp, 1);
@@ -19,6 +19,7 @@ private int getLDSSize(int[] nums, int[] dp) {
 	return ldsSize;
 }
 
+//Iterate over the DP array backwards and store nums[i] if dp[i]==LDSsize and nums[i]%prev.
 private List<Integer> constructLDS(int[] nums, int[] dp, int ldsSize) {
 	var prev = -1;
 	var lds = new LinkedList<Integer>();
