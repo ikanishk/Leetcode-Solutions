@@ -1,6 +1,8 @@
 class Solution {
 public int longestStrChain(String[] words) {
 	Arrays.sort(words, (String a, String b) -> a.length() - b.length()); // sort by length
+    	// Arrays.sort(words); // sort by length
+
 	Map<String, Integer> dp = new HashMap<>();
 
 	int maxPath = 1;
