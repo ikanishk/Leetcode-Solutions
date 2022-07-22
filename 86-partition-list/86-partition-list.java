@@ -8,30 +8,35 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
-public ListNode partition(ListNode head, int x) {
-        if(head==null) return null;
-        
-      
-        ListNode left=new ListNode(0);
-        ListNode right=new ListNode(0);
-        
-        ListNode tail1=left , tail2=right;
-      
-        ListNode iterator=head;
-        while(iterator!=null){
-            if(iterator.val<x){
-                tail1.next=iterator;
-                tail1=tail1.next;
-            }else{
-                tail2.next=iterator;
-                tail2=tail2.next;
-            }
-           iterator=iterator.next;
-        }
-        tail1.next=right.next;
-        tail2.next=null; // important
 
-        return left.next;
+//The approach involves creating two empty LLs higher and lower.
+//In Lower, we have all nodes smaller than the target and in Higher we have all the nodes greater than the target.
+//In the end, we merge both the nodes.
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode small = new ListNode(0);
+        ListNode higher = new ListNode(0);
+        
+        ListNode smallHead=small, higherHead = higher;
+        
+        while(head!=null){
+            if(head.val<x){
+                //small list
+                smallHead.next = head;
+                smallHead = smallHead.next;
+            }
+            else{
+                //high list
+                higherHead.next = head;
+                higherHead = higherHead.next;
+            }
+            head=head.next;
+        }
+        
+        higherHead.next = null;
+        smallHead.next = higher.next;
+        
+        return small.next;
+        
     }
 }
