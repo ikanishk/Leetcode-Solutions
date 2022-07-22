@@ -1,17 +1,18 @@
 class Solution {
-    public int minOperations(int[] A, int[] numsDivide) {
-        int g = numsDivide[0], tmp;
-        for (int a : numsDivide) {
-            while (a > 0) { // g = gcd(g, a)
-                tmp = g % a;
-                g = a;
-                a = tmp;
-            }
+    public int minOperations(int[] nums, int[] numsDivide) {
+        int gcd=0,count=0;
+        for(int a:numsDivide){
+            gcd = findGCD(gcd,a);
         }
-        Arrays.sort(A);
-        for (int i = 0; i < A.length && A[i] <= g; ++i)
-            if (g % A[i] == 0)
-                return i;
+        Arrays.sort(nums);
+        for(int a:nums){
+            if(gcd%a==0) return count;
+            count++;
+        }
         return -1;
+    }
+    int findGCD(int a,int b){
+        if(b==0) return a;
+        return findGCD(b,a%b);
     }
 }
