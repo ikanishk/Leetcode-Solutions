@@ -1,3 +1,5 @@
+ // Count consecutive zeroes
+    // For any array of length n the number of possible subarrays= n(n+1)/2
 class Solution {
 	public long zeroFilledSubarray(int[] arr) {
 		long count = 0;
@@ -6,7 +8,8 @@ class Solution {
 			if (arr[i] == 0) {
 				count++;
 			} else {
-				sum += (count * (count + 1) / 2);
+		sum += (count * (count + 1) / 2); // For any array of length n the no. of possible subarrays= n(n+1)/2
+
 				count = 0;
 			}
 		}
