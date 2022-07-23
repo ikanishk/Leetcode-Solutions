@@ -1,4 +1,6 @@
 class Solution {
+    // Count consecutive zeroes
+    // For any array of length n the number of possible subarrays= n(n+1)/2
     public long zeroFilledSubarray(int[] nums) {
         long res = 0;
         for (int l = 0, r = 0; r < nums.length; r++) {
