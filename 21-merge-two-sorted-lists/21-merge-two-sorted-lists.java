@@ -9,44 +9,27 @@
  * }
  */
 class Solution {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        
-        //null check for both lists//
-        if(list1==null){
-            return list2;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        if(l1.val > l2.val) {
+            ListNode temp = l1;
+            l1 = l2;
+            l2 = temp;
         }
-        if(list2==null){
-            return list1;
-        }
-        
-        //Keep both pointers on the head of both the linked list.
-        ListNode head = null, tail = null;
-        while(list1!=null && list2!=null){
-            if(head==null){
-                if(list1.val<=list2.val){
-                    head = tail = list1;
-                    list1 = list1.next;
-                }else{
-                    head = tail = new ListNode(list2.val);
-                    list2=  list2.next;
-                }
-                
-            }else{
-                if(list1.val<=list2.val){
-                    tail.next = list1;
-                    list1 = list1.next;
-                }else{
-                    tail.next = list2;
-                    list2=  list2.next;
-                }
-                tail = tail.next;
+
+        ListNode res = l1;
+        while(l1!= null && l2!= null) {
+            ListNode curr = null;
+            while(l1 != null && l1.val <= l2.val) {
+                curr = l1;
+                l1 = l1.next; 
             }
+            curr.next = l2;
+            ListNode temp =l1;
+            l1= l2;
+            l2 = temp; 
         }
-        if(list1==null){
-            tail.next = list2;
-        }else{
-            tail.next = list1;
-        }
-        return head;
+        return res;
     }
 }
