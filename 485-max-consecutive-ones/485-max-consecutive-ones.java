@@ -1,8 +1,6 @@
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
-        if (nums == null) {
-            throw new IllegalArgumentException("Input array is null");
-        }
+   
 
         int curCount = 0;
         int maxCount = 0;
