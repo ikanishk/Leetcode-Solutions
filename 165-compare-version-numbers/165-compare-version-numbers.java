@@ -1,70 +1,51 @@
+// O(n) , where n => no of elements in the version part
+// O(1), space complexity
 class Solution {
-    public int compareVersion(String version1, String version2) {
-        String[] str1 = version1.split("\\.");
-        String[] str2 = version2.split("\\.");
 
-        int len1 = str1.length;
-        int len2 = str2.length;
-		// Basic logic is to check each character one by one. If they are same we continue checking, or else,
-		//we simply return the result depending on which number is greater.
-        // This is the case if length of both versions match.
-        if(len1 == len2){
-            int i = 0;
-            while(i<len1){
-            if(Integer.valueOf(str1[i]) > Integer.valueOf(str2[i])){
-                    return 1;
-                }
-                else if(Integer.valueOf(str1[i]) < Integer.valueOf(str2[i])){
-                    return -1;
-                }
-                else{
-                    i++;
-                }
+    public int compareVersion(String version1, String version2) {
+        String[] version1List = version1.split("\\."); // Note your cant directly use split(".") because if will treat he regex as any character
+        String[] version2List = version2.split("\\.");
+
+        int s1 = 0;
+        int s2 = 0;
+
+        int len1 = version1List.length;
+
+        int len2 = version2List.length;
+
+        while(s1<len1 && s2<len2){
+            int val1 = Integer.parseInt(version1List[s1]);
+            int val2 = Integer.parseInt(version2List[s2]);
+            s1++;
+            s2++;
+
+            if(val1>val2){
+                return 1;
+            } else if(val1<val2){
+                return -1;
+            } else{
+                // continue
+            }
+
+        }
+
+        while(s1<len1){
+            int val1 = Integer.parseInt(version1List[s1]);
+            s1++;
+            if(val1>0){
+                return 1;
             }
         }
-		
-		//If length of version 1 is more.
-        if(len1>len2){
-            int i = 0;
-            while(i<len2){
-            if(Integer.valueOf(str1[i]) > Integer.valueOf(str2[i])){
-                    return 1;
-                }
-                else if(Integer.valueOf(str1[i]) < Integer.valueOf(str2[i])){
-                    return -1;
-                }
-                else{
-                    i++;
-                }
-            }
-            while(i<len1){
-                if(Integer.valueOf(str1[i]) > 0){
-                    return 1;
-                }
-                i++;
+
+
+        while(s2<len2){
+            int val2 = Integer.parseInt(version2List[s2]);
+            s2++;
+            if(val2>0){
+                return -1;
             }
         }
-        //If length of version 2 is more.
-        if(len1<len2){
-            int i = 0;
-            while(i<len1){
-            if(Integer.valueOf(str1[i]) > Integer.valueOf(str2[i])){
-                    return 1;
-                }
-                else if(Integer.valueOf(str1[i]) < Integer.valueOf(str2[i])){
-                    return -1;
-                }
-                else{
-                    i++;
-                }
-            }
-            while(i<len2){
-                if(Integer.valueOf(str2[i]) > 0){
-                    return -1;
-                }
-                i++;
-            }
-        }
+
         return 0;
     }
 }
