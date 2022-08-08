@@ -16,7 +16,7 @@
 class Solution {
 
     public int diameterOfBinaryTree(TreeNode root) {
-        int[]dia=new int[1];
+        int[]dia=new int[1];//since java passes by value, we create a single element array and pass it's ref.
         dfs(root,dia);
         return dia[0];
     }
