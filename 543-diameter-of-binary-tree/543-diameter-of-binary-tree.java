@@ -26,7 +26,11 @@ class Solution {
         int lh=dfs(node.left,dia);
         int rh=dfs(node.right,dia);
         
-    dia[0] = Math.max(dia[0], lh + rh);
+        if((lh+rh)>dia[0]){
+            dia[0]=lh+rh;
+            // return dia[0];
+        }
+        
         return 1+Math.max(lh,rh);
     }
 }
