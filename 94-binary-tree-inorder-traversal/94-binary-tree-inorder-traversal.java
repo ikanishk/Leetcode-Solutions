@@ -21,8 +21,6 @@ public List<Integer> inorderTraversal(TreeNode root) {
     helper(root, res);
     return res;
 
-    //helper function for method 1
-
 }
         private void helper(TreeNode root, List<Integer> res) {
         if (root != null) {
