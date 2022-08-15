@@ -11,9 +11,12 @@ class Solution {
 			ans.add(new ArrayList<Integer>(curr));
 			return;
 		}
+        //include arr[i]
 		curr.add(arr[i]);
 		rec(arr, i + 1, curr, ans);
 		curr.remove(curr.size() - 1);
+        
+        //exclude arr[i]
 		rec(arr, i + 1, curr, ans);
         
 	}
