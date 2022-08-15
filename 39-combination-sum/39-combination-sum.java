@@ -9,7 +9,8 @@ class Solution {
         //Call to select 
         if (arr[ind] <= target) {
             ds.add(arr[ind]);
-            findCombinations(ind, arr, target - arr[ind], ans, ds);
+            findCombinations(ind, arr, target - arr[ind], ans, ds);// in the call to select we do not increment the 'ind' because we can use a element infinite times.
+
             ds.remove(ds.size() - 1);//removing the elements so we can regain the original combination at                                       the higher level to continue the recursion on the other option.
         }
         
