@@ -1,37 +1,32 @@
-class Solution {
+ public class Solution {
     public int[][] updateMatrix(int[][] matrix) {
-        int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0}};
-        int r = matrix.length;
-        int c = matrix[0].length;
-        int[][] visited = new int[r][c];
-        
-        Queue<int[]> q = new LinkedList<>();
-        
-        for(int i = 0; i < r; i++){
-            for(int j = 0; j < c; j++){
-                if(matrix[i][j] == 0){
-                    q.add(new int[]{i,j});
-                    visited[i][j] = 1;
+        int m = matrix.length;
+        int n = matrix[0].length;
+       Queue<int[]> queue = new LinkedList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    queue.offer(new int[] {i, j});
+                }
+                else {
+                    matrix[i][j] = Integer.MAX_VALUE;
                 }
             }
         }
+        // DO BFS IN ALL NEIGHBOURS SO THAT WE GET FINAL RESULT 
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         
-        int step = 1;
-        while(!q.isEmpty()){
-            int size = q.size();
-            for(int k = 0; k < size; k++){
-                int[] temp = q.poll();
-                for(int[] dir : dirs){
-                    int x = temp[0] + dir[0];
-                    int y = temp[1] + dir[1];
-                    if(x >= 0 && x < r && y >= 0 && y < c && visited[x][y] == 0){
-                        visited[x][y] = 1;
-                        matrix[x][y] = step;
-                        q.add(new int[]{x,y});
-                    }
-                }         
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            for (int[] d : dirs) {
+                int r = cell[0] + d[0];
+                int c = cell[1] + d[1];
+				 // if new cell is out of bounds or is already closer to another 0, stop further bfs in this cell 
+                if (r < 0 || r >= m || c < 0 || c >= n || 
+                    matrix[r][c] <= matrix[cell[0]][cell[1]] + 1) continue;
+                queue.add(new int[] {r, c});
+                matrix[r][c] = matrix[cell[0]][cell[1]] + 1;
             }
-            step++;
         }
         
         return matrix;
