@@ -1,13 +1,17 @@
 class Solution {
-    
-    //The thought is that the minimum element would be the only one who is less than its previous in a sorted array.
+    // TC : O(logn)
+    // SC : O()
     public int findMin(int[] nums) {
-        int min=nums[0];
-        for(int i=1;i<nums.length;i++){
-         if(nums[i]<nums[i-1]){
-             min= nums[i];
-         }
-       }
-        return min;
+        int low = 0;
+        int high = nums.length - 1;
+        while(low < high){
+            int mid = low + ( high - low)/2;
+            if(nums[high] >= nums[mid]){
+                high = mid;
+            } else {
+                low = mid+1;
+            }
+        }
+        return nums[low];
     }
 }
