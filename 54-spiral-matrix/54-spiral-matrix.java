@@ -1,8 +1,8 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        if (matrix == null) {
-            throw new IllegalArgumentException("Input is invalid");
-        }
+        // if (matrix == null) {
+        //     throw new IllegalArgumentException("Input is invalid");
+        // }
 
         List<Integer> result = new ArrayList<>();
         if (matrix.length == 0 || matrix[0].length == 0) {
