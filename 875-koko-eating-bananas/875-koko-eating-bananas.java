@@ -1,18 +1,43 @@
+//The approach is run BS in the search space that is 0 to the max of piles array.
+
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        int lo = 1;
-        int hi = 1000000000;
-        while(lo < hi){
-            int mid = lo + (hi - lo) / 2;
-            int hour = 0;
-            for(int p : piles){
-                hour += (p - 1) / mid + 1;
-            }
-            if(hour > h)
-                lo = mid + 1;
-            else
-                hi = mid;
+        int max = piles[0];
+        
+        for(int val : piles) {
+            max = Math.max(max,val);
         }
-        return hi;
+        
+        if(h == piles.length) {
+            return max;
+        }
+        
+        int lo = 0, hi = max;
+        int ans = 0;
+        
+        while(lo <= hi) {
+            int mid = lo + (hi - lo)/2;
+            
+            if(isPossible(piles,mid,h) == true) {
+                ans = mid;
+                hi = mid-1;
+            }
+            else {
+                lo = mid+1;
+            }
+        }
+        
+        return ans;
+    }
+    
+    
+    public static boolean isPossible(int[]piles,int sp,int h) {
+        int t = 0;
+        
+        for(int i=0; i < piles.length;i++) {
+            t += Math.ceil(piles[i]*1.0 / sp);
+        }
+        
+        return t <= h;
     }
 }
