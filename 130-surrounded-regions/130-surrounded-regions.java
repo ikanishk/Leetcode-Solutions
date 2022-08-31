@@ -1,3 +1,5 @@
+//The approach involves traversing all boundaries and running a "DFS" on all Os and mark their connections as 
+ //   visited. Now see what zeroes are left and convert them to "X".
 class Solution {
 public void solve(char[][] board) {
 
