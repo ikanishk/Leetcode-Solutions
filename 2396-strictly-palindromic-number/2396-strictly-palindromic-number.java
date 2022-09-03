@@ -6,7 +6,7 @@ class Solution {
       // the radix or base to be used in getting the string representation of int method argument
  
       for(int i=2;i<=n-2;i++){
-          if( !checkPalindrome(Integer.toString(n,i)) )   
+          if( !checkPalindrome(Integer.toString(n,i)) )  //please memorize this function 
           return false;
       }
       return true;
