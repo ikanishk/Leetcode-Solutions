@@ -1,13 +1,23 @@
 class Solution {
-    public int minGroups(int[][] intervals) {
-        int res = 0, cur = 0, n = intervals.length, A[][] = new int[n * 2][2];
-        for (int i = 0; i < n; ++i) {
-            A[i * 2] = new int[]{intervals[i][0], 1};
-            A[i * 2 + 1] = new int[]{intervals[i][1] + 1, -1};
-        }
-        Arrays.sort(A, Comparator.comparingInt(o -> o[0] * 3 + o[1]));
-        for (int[] a: A)
-            res = Math.max(res, cur += a[1]);
-        return res;
-    }
+	// TC : O(nlogn)
+	// SC : O(1)
+	public int minGroups(int[][] intervals) {
+
+		Arrays.sort(intervals, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+
+		PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+		for (int[] interval: intervals) {
+			int left = interval[0];
+			int right = interval[1];
+
+			if (!minHeap.isEmpty() && left > minHeap.peek()) {
+				// current interval safe be part of the same group as that of peek element
+				minHeap.poll();
+			}
+			minHeap.offer(right);
+		}
+
+		return minHeap.size();
+	}
 }
